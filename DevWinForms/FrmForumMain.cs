@@ -18,6 +18,7 @@ namespace DevWinForms
         public FrmForumMain()
         {
             InitializeComponent();
+            dGVReponse.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void FrmForumMain_Load(object sender, EventArgs e)
@@ -25,9 +26,10 @@ namespace DevWinForms
             remplirComboBoxCategorie(Outils.GetAllCategories());
 
             remplirComboBoxSujet(Outils.GetSujetsByCategorieID((int)cbBoxCategorie.SelectedValue));
+            ModoVisibilite();
         }
 
-      
+
 
         private void cbBoxCategorie_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -66,7 +68,11 @@ namespace DevWinForms
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-
+            using(FrmIdentification frmident = new FrmIdentification())
+            {
+                frmident.ShowDialog();
+            }
+            ModoVisibilite();
         }
 
         private void btLogout_Click(object sender, EventArgs e)
@@ -81,7 +87,7 @@ namespace DevWinForms
 
         private void btQuitter_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
 
@@ -98,6 +104,15 @@ namespace DevWinForms
             cbBoxCategorie.ValueMember = "Id";
             cbBoxCategorie.DisplayMember = "Libelle";
             cbBoxCategorie.DataSource = categories;
+        }
+
+        private void ModoVisibilite()
+        {
+            grBoxAjoutSujetReponse.Visible = FrmAccueil.Isconnected;
+            btEditPassword.Visible = FrmAccueil.Isconnected;
+            btLogout.Visible = FrmAccueil.Isconnected;
+            grBoxAdministration.Visible = FrmAccueil.IsRmodo;
+            btLogin.Visible = FrmAccueil.Isconnected;
         }
 
     }
