@@ -68,11 +68,11 @@ namespace DevWinForms
 
         private void btLogin_Click(object sender, EventArgs e)
         {
-            using(FrmIdentification frmident = new FrmIdentification())
-            {
-                frmident.ShowDialog();
-            }
-            ModoVisibilite();
+            //using(FrmIdentification frmident = new FrmIdentification())
+            //{
+            //    frmident.ShowDialog();
+            //}
+            //ModoVisibilite();
         }
 
         private void btLogout_Click(object sender, EventArgs e)

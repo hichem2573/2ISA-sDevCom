@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace DevCMetier
@@ -8,11 +9,7 @@ namespace DevCMetier
     // On spécifie que le type définit ou implémente un contrat et qu'il est sérialisable
     [DataContract]
 
-    public class Categorie
-    {
-
-        [DataContract]
-
+ 
         public class Categorie
         {
             #region "Property et Attributs"
@@ -92,4 +89,4 @@ namespace DevCMetier
             #endregion
         }
     }
-}
+
